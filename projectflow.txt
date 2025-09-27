@@ -93,14 +93,24 @@ pip install sklearn
 pip install pyyaml
 python data_ingestion.py  = Created  data and logs folder in data-> raw(test and train.csv) ||src/logs/data_ingestion.log
 
-python data_preprocessing.py
+python src/data_preprocessing.py
 pip install nltk
 import nltk
 nltk.download('punkt_tab')
 exit()
-python data_preprocessing.py
-
-
-python feature_engineering.py
+python src/data_preprocessing.py
+python src/feature_engineering.py
+no issue
+python src/model_building.py
+no issue
+python src/src/model_evaluation.py
 no issue
 
+add params.yaml file
+Add the params setup
+
+#Setting up dcv pipeline (without params)
+Create dvc.yaml file and add stages to it.
+pip install dvc 
+dvc init then do "dvc repro" to test the pipeline automation. (check dvc dag)
+Now git add, commit, push
