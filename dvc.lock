@@ -9,11 +9,11 @@ stages:
       size: 3638
     params:
       params.yaml:
-        data_ingestion.test_size: 0.2
+        data_ingestion.test_size: 0.21
     outs:
     - path: data/raw
       hash: md5
-      md5: 1a287d34dc172d9f950c03dae35f7e73.dir
+      md5: 4f8ed12448f912122e61579897c4099f.dir
       size: 484846
       nfiles: 2
   data_preprocessing:
@@ -21,7 +21,7 @@ stages:
     deps:
     - path: data/raw
       hash: md5
-      md5: 1a287d34dc172d9f950c03dae35f7e73.dir
+      md5: 4f8ed12448f912122e61579897c4099f.dir
       size: 484846
       nfiles: 2
     - path: src/data_preprocessing.py
@@ -31,16 +31,16 @@ stages:
     outs:
     - path: data/interim
       hash: md5
-      md5: d99be5cb2b019d747166f90739fa6d08.dir
-      size: 260073
+      md5: b4f97c417a52c607b4a413bdef8e0da1.dir
+      size: 260499
       nfiles: 2
   feature_engineering:
     cmd: python src/feature_engineering.py
     deps:
     - path: data/interim
       hash: md5
-      md5: d99be5cb2b019d747166f90739fa6d08.dir
-      size: 260073
+      md5: b4f97c417a52c607b4a413bdef8e0da1.dir
+      size: 260499
       nfiles: 2
     - path: src/feature_engineering.py
       hash: md5
@@ -48,20 +48,20 @@ stages:
       size: 3909
     params:
       params.yaml:
-        feature_engineering.max_features: 30
+        feature_engineering.max_features: 33
     outs:
     - path: data/processed
       hash: md5
-      md5: 563fba280ea924f9c88c85248dd02661.dir
-      size: 718252
+      md5: 89ede5d9e473f199a32dd790589e5bc7.dir
+      size: 789311
       nfiles: 2
   model_building:
     cmd: python src/model_building.py
     deps:
     - path: data/processed
       hash: md5
-      md5: 563fba280ea924f9c88c85248dd02661.dir
-      size: 718252
+      md5: 89ede5d9e473f199a32dd790589e5bc7.dir
+      size: 789311
       nfiles: 2
     - path: src/model_building.py
       hash: md5
@@ -74,8 +74,8 @@ stages:
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: 7855bae9823aec7273850295828b2fd6
-      size: 627649
+      md5: 40838d208e97e2babb13de0072c58e44
+      size: 699027
   model_evaluation:
     cmd: python src/model_evaluation.py
     deps:
