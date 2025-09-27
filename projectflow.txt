@@ -135,3 +135,10 @@ If you want to make this rollback permanent in Git:
 git add .
 git commit -m "Rolled back to experiment c7c85eb"
 git push origin main
+
+#Clone and roll back
+if DVC is not pushed to DVC remote then use below cmd
+dvc exp list
+
+git log --oneline
+git checkout c7c85eb
