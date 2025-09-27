@@ -117,10 +117,21 @@ Now git add, commit, push
 
 
 Expermients with DVC:
-12> pip install dvclive
-13> Add the dvclive code block (mentioned below)
-14> Do "dvc exp run", it will create a new dvc.yaml(if already not there) and dvclive directory (each run will be considered as an experiment by DVC)
-15> Do "dvc exp show" on terminal to see the experiments or use extension on VSCode (install dvc extension)
-16> Do "dvc exp remove {exp-name}" to remove exp (optional) | "dvc exp apply {exp-name}" to reproduce prev exp
-17> Change params, re-run code (produce new experiments)
-18> Now git add, commit, push
+ pip install dvclive
+Add the dvclive code block (mentioned below)
+Do "dvc exp run", it will create a new dvc.yaml(if already not there) and dvclive directory (each run will be considered as an experiment by DVC)
+ Do "dvc exp show" on terminal to see the experiments or use extension on VSCode (install dvc extension)
+ Do "dvc exp remove {exp-name}" to remove exp (optional) | "dvc exp apply {exp-name}" to reproduce prev exp
+ Change params, re-run code (produce new experiments)
+ Now git add, commit, push
+
+#Apply the experiment to your workspace
+dvc exp apply c7c85eb
+#This will roll back your workspace (code, params, and outputs) to that experiment.
+#Now your files will match the state of that experiment.
+
+#Optionally commit it to main
+If you want to make this rollback permanent in Git:
+git add .
+git commit -m "Rolled back to experiment c7c85eb"
+git push origin main
