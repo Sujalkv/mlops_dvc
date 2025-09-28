@@ -1,0 +1,5 @@
+[core]
+    remote = dvcstore
+['remote "dvcstore"']
+    url = s3://mlops-dvc-storage-dvcmlops/
+    profile = sujalkaccountorg

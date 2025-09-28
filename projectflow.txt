@@ -142,3 +142,23 @@ dvc exp list
 
 git log --oneline
 git checkout c7c85eb
+
+#if you haven’t set up a DVC remote, then dvc push or dvc exp push (when data is involved) 
+won’t work properly.
+STEP 1️⃣: Decide Where to Store DVC 
+dvc remote add -d dvcstore s3://mlops-dvc-storage-dvcmlops
+config inside .dvc we will like below:
+[core]
+    remote = dvcstore
+['remote "dvcstore"']
+    url = s3://mlops-dvc-storage
+
+pip install dvc[s3]
+dvc push
+dvc push -v
+
+
+| Action                  | Required for rollback locally?                  |
+| ----------------------- | ----------------------------------------------- |
+| `dvc push` (to S3)      | ✅ Yes, ensures data is available                |
+| `dvc exp push` (to Git) | ❌ No, only for sharing or backup of experiments |
